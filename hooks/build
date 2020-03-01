@@ -2,7 +2,7 @@
 #!/bin/bash
 
 if [[ -z "$SOURCE_COMMIT" ]]; then
-	export SOURCE_COMMIT="${SOURCE_COMMIT:-$(git log --format=oneline -n 1 $CIRCLE_SHA1)}"
+	export SOURCE_COMMIT="${SOURCE_COMMIT:-$(git log --format=oneline -n 1)}"
 	echo "Updating SOURCE_COMMIT from git rev-parse HEAD"
 	echo "SOURCE_COMMIT: $SOURCE_COMMIT"
 fi
