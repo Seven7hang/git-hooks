@@ -1,3 +1,0 @@
-#!/bin/bash
-echo "=> Building the binary in "$COMMIT_MSG
-docker build https://github.com/Seven7hang/my1strepo.git#master:$COMMIT_MSG
