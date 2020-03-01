@@ -10,7 +10,7 @@ COPY package*.json ./
 
 ARG SOURCE_COMMIT
 ENV SOURCE_COMMIT $SOURCE_COMMIT
-RUN echo 'SOURCE_COMMIT: ${SOURCE_COMMIT}'
+RUN echo 'SOURCE_COMMIT: '${SOURCE_COMMIT}
 
 RUN npm install
 # If you are building your code for production
