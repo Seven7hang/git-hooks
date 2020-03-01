@@ -7,6 +7,6 @@ printenv
 # and while executing hooks like here.
 # DOCKER_TAG: the Docker repository tag being built.
 # https://docs.docker.com/docker-hub/builds/advanced/
-docker build -t $IMAGE_NAME --build-arg SOURCE_COMMIT=sh -c 'git show -s --format=%s' .
+docker build -t $IMAGE_NAME --build-arg SOURCE_COMMIT=$COMMIT_MSG .
 
 echo "------ HOOK END   - BUILD -------"
