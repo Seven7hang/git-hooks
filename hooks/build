@@ -14,6 +14,6 @@ echo $DIR
 FILE="$(cut -d'_' -f2 <<<"$COMMIT_MSG")"
 echo $FILE
 
-docker build -t $IMAGE_NAME --build-arg DIR =$DIR --build-arg FILE=$FILE .
+docker build -t $IMAGE_NAME --build-arg DIR=$DIR --build-arg FILE=$FILE .
 
 echo "------ HOOK END   - BUILD -------"
