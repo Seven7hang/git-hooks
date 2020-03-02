@@ -10,8 +10,7 @@ printenv
 
 DIR="$(cut -d'_' -f1 <<<"$COMMIT_MSG")"
 FILE="$(cut -d'_' -f2 <<<"$COMMIT_MSG")"
-NAME="$(cut -d':' -f1 <<<"$IMAGE_NAME")"
 
-docker build -t $NAME:$COMMIT_MSG --build-arg DIR=$DIR --build-arg FILE=$FILE .
+docker build -t $IMAGE_NAME --build-arg DIR=$DIR --build-arg FILE=$FILE .
 
 echo "------ HOOK END   - BUILD -------"

@@ -16,8 +16,7 @@ RUN npm install
 
 COPY ./${DIR} .
 
-ARG FILE
-ENV FILE $FILE'.js'
+ARG FILE=server.js
 USER ${FILE}
 
 EXPOSE 8080
