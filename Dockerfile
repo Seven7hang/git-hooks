@@ -1,12 +1,12 @@
 FROM node:10-alpine
 
+WORKDIR /usr/src/app
+
 ARG DIR
 ENV DIR $DIR
-RUN ls -l
 
-COPY . .
+COPY ${DIR}/package*.json ./
 RUN ls -l
-RUN cd ${DIR}
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
@@ -14,6 +14,9 @@ RUN cd ${DIR}
 RUN npm install
 # If you are building your code for production
 # RUN npm ci --only=production
+
+COPY ./${DIR} .
+RUN ls -l
 
 ARG FILE
 ENV FILE $FILE
