@@ -2,7 +2,7 @@ FROM node:10-alpine
 
 ARG DIR
 ENV DIR $DIR
-RUN cd ${DIR}
+RUN pwd
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
