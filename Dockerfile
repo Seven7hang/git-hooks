@@ -2,7 +2,6 @@ FROM node:10-alpine
 
 ARG DIR
 ENV DIR $DIR
-RUN echo 'DIR: '${DIR}
 RUN cd ${DIR}
 
 # Install app dependencies
@@ -14,7 +13,6 @@ RUN npm install
 
 ARG FILE
 ENV FILE $FILE
-RUN echo 'FILE: '${FILE}'.js'
 
 EXPOSE 8080
 CMD [ "node", ${FILE}".js" ]
