@@ -3,10 +3,9 @@ FROM node:10-alpine
 ARG DIR
 ENV DIR $DIR
 
-WORKDIR /usr/src/app/$DIR
+WORKDIR /usr/src/app/${DIR}
 
 COPY ${DIR}/package*.json ./
-RUN ls -l
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
@@ -16,11 +15,10 @@ RUN npm install
 # RUN npm ci --only=production
 
 COPY ./${DIR} .
-RUN ls -l
 
 ARG FILE
 ENV FILE $FILE'.js'
-RUN echo 'FILE: '${FILE}
+USER ${FILE}
 
 EXPOSE 8080
 CMD [ "node", ${FILE} ]
