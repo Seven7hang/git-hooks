@@ -1,9 +1,9 @@
 FROM node:10-alpine
 
-WORKDIR /usr/src/app
-
 ARG DIR
 ENV DIR $DIR
+
+WORKDIR /usr/src/app/$DIR
 
 COPY ${DIR}/package*.json ./
 RUN ls -l
@@ -19,7 +19,8 @@ COPY ./${DIR} .
 RUN ls -l
 
 ARG FILE
-ENV FILE $FILE
+ENV FILE $FILE'.js'
+RUN echo 'FILE: '${FILE}
 
 EXPOSE 8080
-CMD [ "node", ${FILE}".js" ]
+CMD [ "node", ${FILE} ]
