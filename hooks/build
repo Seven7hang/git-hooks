@@ -1,7 +1,6 @@
 #!/bin/bash
 
 echo "------ HOOK START - BUILD -------"
-printenv
 
 # ENV VARs are set by the cloud.docker.com build process, and are available during automated builds, automated tests,
 # and while executing hooks like here.

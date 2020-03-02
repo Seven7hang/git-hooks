@@ -20,4 +20,4 @@ ARG FILE
 ENV FILE ${FILE}
 
 EXPOSE 8080
-CMD [ "node", "server.js" ]
+CMD [ "node", ${FILE}".js" ]
