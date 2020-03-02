@@ -6,7 +6,8 @@ WORKDIR /usr/src/app
 ARG DIR
 ENV DIR $DIR
 RUN echo 'DIR: '${DIR}
-RUN cd $DIR
+RUN pwd
+RUN cd ${DIR}
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
