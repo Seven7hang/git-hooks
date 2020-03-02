@@ -3,14 +3,15 @@ FROM node:10
 # Create app directory
 WORKDIR /usr/src/app
 
+ARG DIR
+ENV DIR $DIR
+RUN echo 'DIR: '${DIR}
+RUN cd $DIR
+
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
 COPY package*.json ./
-
-ARG SOURCE_COMMIT
-ENV SOURCE_COMMIT $SOURCE_COMMIT
-RUN echo 'SOURCE_COMMIT: '${SOURCE_COMMIT}
 
 RUN npm install
 # If you are building your code for production
@@ -19,5 +20,9 @@ RUN npm install
 # Bundle app source
 COPY . .
 
+ARG FILE
+ENV FILE $FILE
+RUN echo 'FILE: '${FILE}'.js'
+
 EXPOSE 8080
-CMD [ "node", "server.js" ]
+CMD [ "node", ${FILE}".js" ]

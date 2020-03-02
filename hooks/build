@@ -7,6 +7,13 @@ printenv
 # and while executing hooks like here.
 # DOCKER_TAG: the Docker repository tag being built.
 # https://docs.docker.com/docker-hub/builds/advanced/
-docker build -t $IMAGE_NAME --build-arg SOURCE_COMMIT=$GIT_MSG .
+
+$ DIR="$(cut -d'_' -f1 <<<"$COMMIT_MSG")"
+$ echo "$DIR"
+
+$ FILE="$(cut -d'_' -f2 <<<"$COMMIT_MSG")"
+$ echo "$FILE"
+
+docker build -t $IMAGE_NAME --build-arg DIR =$DIR --build-arg FILE=$FILE .
 
 echo "------ HOOK END   - BUILD -------"
