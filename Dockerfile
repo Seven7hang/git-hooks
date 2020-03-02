@@ -1,7 +1,7 @@
 FROM node:10-alpine
 
 ARG DIR
-ENV DIR $DIR
+ENV DIR ${DIR}
 
 WORKDIR /usr/src/app/${DIR}
 
@@ -16,8 +16,8 @@ RUN npm install
 
 COPY ./${DIR} .
 
-ARG FILE=server.js
-USER ${FILE}
+ARG FILE
+ENV FILE ${FILE}
 
 EXPOSE 8080
-CMD [ "node", ${FILE} ]
+CMD [ "node", "server.js" ]
