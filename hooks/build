@@ -8,11 +8,11 @@ printenv
 # DOCKER_TAG: the Docker repository tag being built.
 # https://docs.docker.com/docker-hub/builds/advanced/
 
-$ DIR="$(cut -d'_' -f1 <<<"$COMMIT_MSG")"
-$ echo "$DIR"
+DIR="$(cut -d'_' -f1 <<<"$COMMIT_MSG")"
+echo $DIR
 
-$ FILE="$(cut -d'_' -f2 <<<"$COMMIT_MSG")"
-$ echo "$FILE"
+FILE="$(cut -d'_' -f2 <<<"$COMMIT_MSG")"
+echo $FILE
 
 docker build -t $IMAGE_NAME --build-arg DIR =$DIR --build-arg FILE=$FILE .
 
