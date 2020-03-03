@@ -6,6 +6,7 @@ ENV COMMIT_DIR ${COMMIT_DIR}
 WORKDIR /usr/src/app/${COMMIT_DIR}
 
 COPY ${COMMIT_DIR}/package*.json ./
+RUN ls -l
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
