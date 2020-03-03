@@ -1,11 +1,13 @@
 FROM node:10-alpine
 
-ARG DIR
-ENV DIR $DIR
+ARG COMMIT_DIR
+ENV COMMIT_DIR ${COMMIT_DIR}
+RUN echo "COMMIT_DIR: "${COMMIT_DIR}
 
-WORKDIR /usr/src/app/${DIR}
+WORKDIR /usr/src/app/${COMMIT_DIR}
 
-COPY ${DIR}/package*.json ./
+COPY ${COMMIT_DIR}/package*.json ./
+RUN ls -l
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
@@ -14,7 +16,7 @@ RUN npm install
 # If you are building your code for production
 # RUN npm ci --only=production
 
-COPY ./${DIR} .
+COPY ./${COMMIT_DIR} .
 RUN ls -l
 
 EXPOSE 8080
