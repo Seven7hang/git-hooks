@@ -16,6 +16,7 @@ RUN npm install
 # RUN npm ci --only=production
 
 COPY ./${COMMIT_DIR} .
+RUN ls -l
 
 EXPOSE 8080
 CMD [ "node", "lambda.js" ]
