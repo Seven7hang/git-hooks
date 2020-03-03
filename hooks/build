@@ -2,18 +2,12 @@
 
 echo "------ HOOK START - BUILD -------"
 
-# ENV VARs are set by the cloud.docker.com build process, and are available during automated builds, automated tests,
-# and while executing hooks like here.
-# DOCKER_TAG: the Docker repository tag being built.
-# https://docs.docker.com/docker-hub/builds/advanced/
-COMMIT_DIR="$(cut -d'-' -f3 <<<"$COMMIT_MSG")"
-
-if [ -z "$COMMIT_DIR" ]
+DIR="$(cut -d'-' -f3 <<<"$COMMIT_MSG")"
+if [ -z "$DIR" ]
 then
 echo "Directory is empty! Exit with error!"
-exit 1
-else
-docker build -t $IMAGE_NAME --build-arg COMMIT_DIR=$COMMIT_DIR .
 fi
+
+docker build -t $IMAGE_NAME --build-arg DIR=$DIR .
 
 echo "------ HOOK END   - BUILD -------"
