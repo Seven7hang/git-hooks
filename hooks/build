@@ -6,10 +6,14 @@ echo "------ HOOK START - BUILD -------"
 # and while executing hooks like here.
 # DOCKER_TAG: the Docker repository tag being built.
 # https://docs.docker.com/docker-hub/builds/advanced/
+COMMIT_DIR="$(cut -d'-' -f3 <<<"$COMMIT_MSG")"
 
-DIR="$(cut -d'_' -f1 <<<"$COMMIT_MSG")"
-FILE="$(cut -d'_' -f2 <<<"$COMMIT_MSG")"
-
-docker build -t $IMAGE_NAME --build-arg DIR=$DIR --build-arg FILE=$FILE .
+if [ -z "$COMMIT_DIR" ]
+then
+echo "Directory is empty! Exit with error!"
+exit 1
+else
+docker build -t $IMAGE_NAME --build-arg COMMIT_DIR=$COMMIT_DIR .
+fi
 
 echo "------ HOOK END   - BUILD -------"

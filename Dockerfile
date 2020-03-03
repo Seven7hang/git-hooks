@@ -1,11 +1,11 @@
 FROM node:10-alpine
 
-ARG DIR
-ENV DIR ${DIR}
+ARG COMMIT_DIR
+ENV COMMIT_DIR ${COMMIT_DIR}
 
-WORKDIR /usr/src/app/${DIR}
+WORKDIR /usr/src/app/${COMMIT_DIR}
 
-COPY ${DIR}/package*.json ./
+COPY ${COMMIT_DIR}/package*.json ./
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
@@ -14,10 +14,7 @@ RUN npm install
 # If you are building your code for production
 # RUN npm ci --only=production
 
-COPY ./${DIR} .
-
-ARG FILE
-ENV FILE ${FILE}
+COPY ./${COMMIT_DIR} .
 
 EXPOSE 8080
-CMD [ "node", ${FILE}".js" ]
+CMD [ "node", "lambda.js" ]

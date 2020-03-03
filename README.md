@@ -13,3 +13,4 @@
 	7. hooks/post_push (only used when executing a build rule or automated build )
 3) A hooks/build file overrides the basic docker build command used by the builder, so we must include a similar build command in the hook or the automated build fails.
 	1. e.g. docker build -t $IMAGE_NAME --build-arg SOURCE_COMMIT=$GIT_MSG
+
